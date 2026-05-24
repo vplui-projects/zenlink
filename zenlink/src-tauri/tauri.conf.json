@@ -3,9 +3,7 @@
   "productName": "ZenLink",
   "version": "0.1.0",
   "identifier": "com.zenlink.app",
-  "build": {
-    "devtools": true
-  },
+  "build": {},
   "app": {
     "windows": [
       {
