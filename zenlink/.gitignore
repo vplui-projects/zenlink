@@ -1,6 +1,0 @@
-node_modules/
-dist/
-.env
-*.log
-src-tauri/target/
-src-tauri/Cargo.lock
