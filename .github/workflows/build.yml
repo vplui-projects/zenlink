@@ -20,13 +20,11 @@ jobs:
           node-version: "20"
           cache: "npm"
 
-      - name: Install Rust
-        uses: dtolnay/rust-action@stable
-        with:
-          targets: x86_64-pc-windows-msvc
-
-      - name: Install Rust target
-        run: rustup target add x86_64-pc-windows-msvc
+- name: Install Rust
+  uses: actions-rs/toolchain@v1
+  with:
+    toolchain: stable
+    target: x86_64-pc-windows-msvc
 
       - name: Install frontend deps
         run: npm ci
