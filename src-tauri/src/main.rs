@@ -4,17 +4,18 @@ use tauri::{AppHandle, Manager, WebviewWindow};
 use tauri_plugin_clipboard_manager::ClipboardExt;
 
 #[tauri::command]
-fn get_focused_text(app: AppHandle) -> String {
-    match app.clipboard().get_text() {
+async fn get_focused_text(app: AppHandle) -> String {
+    match app.clipboard().read_text().await {
         Ok(text) => text,
         Err(_) => String::from(""),
     }
 }
 
 #[tauri::command]
-fn inject_processed_text(app: AppHandle, text: String) -> Result<(), String> {
+async fn inject_processed_text(app: AppHandle, text: String) -> Result<(), String> {
     app.clipboard()
-        .set_text(text)
+        .write_text(text)
+        .await
         .map_err(|e| e.to_string())
 }
 
